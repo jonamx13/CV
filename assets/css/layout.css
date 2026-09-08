@@ -1,0 +1,36 @@
+/* ==========================================================================
+   LAYOUT ARCHITECTURE (BENTO GRID)
+   ========================================================================== */
+.bento-grid {
+  display: flex; gap: 1.5rem; width: 100%; max-width: 1500px; height: 100%; z-index: 1;
+}
+.bento-col { display: flex; flex-direction: column; gap: 1.5rem; height: 100%; }
+.col-left { width: 320px; flex-shrink: 0; }
+.col-center { flex: 1; min-width: 0; }
+.col-right { width: 320px; flex-shrink: 0; }
+
+/* ==========================================================================
+   SCROLLING AREAS
+   ========================================================================== */
+.scroll-area {
+  flex: 1; overflow-y: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.8rem;
+  scrollbar-width: thin; scrollbar-color: var(--accent-blue) rgba(255,255,255,0.02);
+}
+.scroll-area::-webkit-scrollbar { width: 4px; }
+.scroll-area::-webkit-scrollbar-track { background: rgba(255,255,255,0.02); border-radius: 10px; }
+.scroll-area::-webkit-scrollbar-thumb { background: var(--accent-blue); border-radius: 10px; }
+.scroll-area::-webkit-scrollbar-thumb:hover { background: var(--accent-cyan); }
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (MOBILE DEGRADATION)
+   ========================================================================== */
+@media (max-width: 1024px), (max-height: 900px) {
+  body { height: auto; overflow: auto; padding: 1.5rem; }
+  .bg-grid-container { display: none; }
+  .bento-grid { flex-direction: column; height: auto; }
+  .bento-col { width: 100%; height: auto; }
+  .card-experience { overflow: visible; }
+  .scroll-area { overflow-y: visible; padding-right: 0; }
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jonathan Meixueiro | Motion Grapher & UI/UX</title>
+
+  <!-- Stylesheets: split by concern, loaded as plain files (no bundler needed on GitHub Pages) -->
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/controls.css">
+  <!-- media="print" -> these rules only ever apply to the printed / "Save as PDF" output -->
+  <link rel="stylesheet" href="assets/css/print.css" media="print">
+</head>
+<body>
+
+  <!-- ==========================================
+       SITE CONTROLS (language toggle + download PDF)
+       Fixed top-right, outside the CV layout, excluded from print output.
+       ========================================== -->
+  <div data-include="components/controls.html"></div>
+
+  <!-- ==========================================
+       BACKGROUND ANIMATIONS
+       ========================================== -->
+  <div class="bg-grid-container" aria-hidden="true">
+    <div class="bg-grid"></div>
+    <!-- Horizontal Light Trails -->
+    <div class="trail trail-x t1"></div>
+    <div class="trail trail-x t2"></div>
+    <div class="trail trail-x t3"></div>
+    <!-- Vertical Light Trails -->
+    <div class="trail trail-y t4"></div>
+    <div class="trail trail-y t5"></div>
+    <div class="trail trail-y t6"></div>
+    <div class="bg-mask"></div>
+  </div>
+
+  <!-- ==========================================
+       MAIN DASHBOARD LAYOUT (BENTO GRID)
+       Each column loads its cards from /components - keeps this shell
+       readable and lets each section be edited independently.
+       ========================================== -->
+  <div class="bento-grid">
+
+    <!-- LEFT COLUMN: Profile & Summary -->
+    <aside class="bento-col col-left">
+      <div data-include="components/profile.html"></div>
+      <div data-include="components/summary.html"></div>
+    </aside>
+
+    <!-- CENTER COLUMN: Experience (Scrollable) -->
+    <main class="bento-col col-center">
+      <div data-include="components/experience.html"></div>
+    </main>
+
+    <!-- RIGHT COLUMN: Tools & Education -->
+    <aside class="bento-col col-right">
+      <div data-include="components/tools.html"></div>
+      <div data-include="components/education.html"></div>
+    </aside>
+
+  </div>
+
+  <!-- Shown only in the printed / exported PDF (see print.css); not part of the on-screen CV -->
+  <footer class="print-only" data-i18n="print.footnote">
+    This résumé is kept up to date online — <a href="https://jonamx13.github.io/" target="_blank" rel="noopener noreferrer">CV Available Online</a>
+  </footer>
+
+  <!-- Scripts: dictionary first, then the loader/toggle/print logic -->
+  <script src="assets/js/translations.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

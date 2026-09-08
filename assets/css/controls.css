@@ -1,0 +1,136 @@
+/* ==========================================================================
+   SITE CONTROLS (language toggle + download button)
+   Lives outside the CV layout, fixed to the top-right corner.
+   Hidden entirely when printing/exporting to PDF — see print.css.
+   ========================================================================== */
+.site-controls {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(35px) saturate(200%);
+  -webkit-backdrop-filter: blur(35px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  padding: 0.5rem 0.6rem 0.5rem 1rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Language toggle switch --- */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lang-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  transition: color 0.3s ease;
+  width: 1.4em;
+  text-align: center;
+}
+
+.lang-label.is-active { color: var(--accent-cyan); }
+
+/* Visually-hidden checkbox driving the switch, kept accessible to keyboard/AT */
+.switch-input {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.switch-track {
+  position: relative;
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, var(--accent-cyan), var(--accent-blue));
+  box-shadow: 0 0 8px var(--accent-glow);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* .switch-input and .switch-track are now true siblings, so the adjacent-
+   sibling combinator can actually see :checked and animate the track/thumb */
+.switch-input:checked + .switch-track {
+  background: rgba(6, 182, 212, 0.15);
+  border-color: var(--accent-cyan);
+}
+.switch-input:checked + .switch-track .switch-thumb {
+  transform: translateX(20px);
+}
+.switch-input:focus-visible + .switch-track {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 2px;
+}
+
+/* --- Divider between the toggle and the download button --- */
+.controls-divider {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* --- Download PDF button --- */
+.download-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  padding: 0.45rem 0.9rem 0.45rem 0.7rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.download-btn:hover {
+  background: rgba(6, 182, 212, 0.12);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 12px var(--accent-glow);
+  transform: translateY(-1px);
+}
+.download-btn:active { transform: translateY(0); }
+.download-btn svg {
+  width: 15px; height: 15px;
+  stroke: var(--accent-cyan);
+  fill: none;
+  stroke-width: 2;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px), (max-height: 900px) {
+  .site-controls { position: static; margin: 0 auto 1.5rem auto; width: fit-content; }
+}
+
+/* The print footnote (defined in index.html) only makes sense on paper/PDF */
+.print-only {
+  display: none;
+}

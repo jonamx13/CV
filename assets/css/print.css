@@ -1,0 +1,168 @@
+/* ==========================================================================
+   PRINT / PDF LAYOUT
+   Loaded via <link media="print">, so every rule here only ever applies to
+   the printed / "Save as PDF" output - the live page is untouched.
+
+   Goal: same dark "liquid glass" identity as the site, just re-flowed from
+   the wide 3-column screen dashboard into a 2-column resume layout that
+   fits one Letter page in portrait orientation.
+
+   NOTE ON TUNING: this file does NOT shrink the root font-size globally
+   (an earlier version did, and it wrecked the proportions of every
+   fixed-pixel element - the photo circle, icons, timeline dots - because
+   they don't scale with rem). Instead every element below is sized
+   on purpose, on its own line, so any one of them can be nudged
+   independently without throwing the rest off.
+   ========================================================================== */
+
+@page {
+  size: letter portrait;
+  /* margin is 0 here on purpose - the dark background needs to bleed to the
+     edge of the page. Real whitespace is added back as body padding below. */
+  margin: 0;
+}
+
+/* Browsers skip backgrounds/shadows/gradients when printing unless told
+   otherwise - this one declaration is what keeps the dark theme intact. */
+* {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  color-adjust: exact;
+}
+
+html, body {
+  height: auto;
+  overflow: visible;
+  background: var(--bg-dark);
+  display: block;
+  padding: 0;
+}
+
+body {
+  padding: 0.45in 0.5in;
+}
+
+/* Elements that only exist for the on-screen experience */
+.site-controls {
+  display: none;
+}
+
+/* Keep the grid texture for the same moody backdrop, drop the moving
+   light trails (a frozen mid-animation streak would just look like a glitch) */
+.bg-grid-container { position: fixed; }
+.trail { display: none; }
+
+/* Nothing needs a live cursor/hover state in a static document */
+.bento-card::before,
+.section-icon,
+.photo-container,
+.timeline-item:not(:last-child)::after,
+.timeline-item li::before {
+  animation: none;
+}
+.tool-item, .tool-item:hover,
+.edu-item, .edu-item:hover,
+.bento-card:hover::before {
+  transition: none;
+  transform: none;
+}
+
+/* ==========================================================================
+   RESUME GRID
+   .bento-col becomes "display: contents" so its cards escape the flex
+   wrapper and become direct items of the grid below, individually placed:
+   sidebar (profile, tools, education) + main column (summary, experience).
+   ========================================================================== */
+.bento-grid {
+  display: grid;
+  grid-template-columns: 2.35in 1fr;
+  grid-auto-rows: min-content;
+  gap: 0.3in;
+  width: 100%;
+  max-width: none;
+  height: auto;
+}
+.bento-col { display: contents; }
+
+.card-profile    { grid-column: 1; grid-row: 1; }
+.card-tools      { grid-column: 1; grid-row: 2; }
+.card-education  { grid-column: 1; grid-row: 3; }
+
+.card-summary    { grid-column: 2; grid-row: 1; }
+.card-experience { grid-column: 2; grid-row: 2 / 4; }
+
+.bento-card {
+  break-inside: avoid;
+  height: auto;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+}
+
+.section-title { gap: 0.45rem; margin-bottom: 0.55rem; }
+.section-icon { width: 15px; height: 15px; }
+h3, h4 { margin-bottom: 0.15rem; }
+
+/* --- Profile card: keep the same circular-photo layout, just sized to
+       fit the narrower print sidebar (roughly the same proportion the
+       120px photo has against the 320px on-screen sidebar). --- */
+.card-profile { text-align: center; }
+.photo-container { width: 82px; height: 82px; margin: 0 auto 0.6rem auto; }
+h1 { font-size: 1.15rem; }
+h2 { font-size: 0.66rem; margin-bottom: 0.3rem; }
+
+.contact-info { gap: 0.4rem; margin: 0.9rem auto 0 auto; }
+.contact-info a { font-size: 0.64rem; gap: 0.4rem; }
+.contact-info a svg { width: 11px; height: 11px; }
+
+/* --- Summary --- */
+.card-summary p { font-size: 0.66rem; line-height: 1.45; }
+
+/* --- Experience: give the bullets real breathing room instead of the
+       tight on-screen icon offsets, which assume a much larger font --- */
+.card-experience,
+.scroll-area {
+  overflow: visible;
+}
+h4 { font-size: 0.74rem; }
+.timeline-item .meta { font-size: 0.6rem; margin-bottom: 0.45rem; padding-bottom: 0.3rem; }
+.timeline-item { margin-bottom: 0.85rem; break-inside: avoid; }
+.timeline-item ul { gap: 0.4rem; }
+.timeline-item li {
+  font-size: 0.66rem;
+  line-height: 1.45;
+  padding-left: 1rem;
+}
+.timeline-item li::before {
+  width: 7px;
+  height: 7px;
+  top: 0.35rem;
+}
+.timeline-item::before { width: 8px; height: 8px; left: -1.05rem; top: 0.3rem; }
+.timeline-item:not(:last-child)::after { left: -0.85rem; top: 12px; bottom: -0.85rem; }
+.timeline { margin-left: 0.7rem; padding-left: 0.9rem; }
+
+/* --- Tools --- */
+.tool-category h4 { font-size: 0.66rem; margin-bottom: 0.5rem; }
+.tool-category:not(:first-child) { margin-top: 0.65rem; }
+.tool-list { gap: 0.35rem; margin-left: 12px; }
+.tool-item { font-size: 0.62rem; padding: 0.3rem 0.6rem 0.3rem 1.5rem; }
+.tool-icon-circle { width: 22px; height: 22px; left: -12px; }
+.svg-icon { width: 11px; height: 11px; }
+
+/* --- Education --- */
+.edu-list { gap: 0.6rem; }
+.edu-logo { width: 26px; height: 26px; }
+.edu-details h4 { font-size: 0.66rem; }
+.edu-details span { font-size: 0.58rem; }
+
+/* Footnote shown only in the printed / exported document (hidden on screen - see controls.css) */
+.print-only {
+  display: block;
+  margin-top: 0.3in;
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--glass-border);
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+.print-only a { color: var(--accent-cyan); }

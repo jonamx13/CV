@@ -1,0 +1,156 @@
+/* ==========================================================================
+   LIQUID GLASS CARDS
+   ========================================================================== */
+.bento-card {
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(35px) saturate(200%);
+  -webkit-backdrop-filter: blur(35px) saturate(200%);
+  border-radius: 24px; padding: 1.8rem;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2),
+    inset 1px 0 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex; flex-direction: column;
+}
+
+.bento-card::before {
+  content: ''; position: absolute; inset: -1px; border-radius: 25px; padding: 1px;
+  background: linear-gradient(90deg, var(--accent-cyan), var(--accent-blue), var(--accent-cyan));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; z-index: -1;
+  background-size: 200% 100%; animation: borderFlow 6s linear infinite; opacity: 0.2; transition: opacity 0.3s;
+}
+.bento-card:hover::before { opacity: 0.6; }
+@keyframes borderFlow { 0% { background-position: 100% 0; } 100% { background-position: -100% 0; } }
+
+/* Dynamic Card Heights */
+.card-profile { height: fit-content; text-align: center; flex-shrink: 0; }
+.card-summary { flex: 1; min-height: 0; overflow: hidden; }
+.card-summary p { margin: auto 0; }
+.card-experience { flex: 1; overflow: hidden; }
+.card-tools { height: fit-content; flex-shrink: 0; }
+.card-education { flex: 1; min-height: 0; overflow: hidden; }
+.card-education .edu-list { margin: auto 0; }
+
+/* ==========================================================================
+   PROFILE SPECIFICS & CONTACT LINKS
+   ========================================================================== */
+.photo-container {
+  position: relative; width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1.2rem auto;
+  border: 2px solid transparent; background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box, linear-gradient(45deg, var(--accent-cyan), var(--accent-blue)) border-box;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.15); animation: photoPulse 4s infinite alternate;
+}
+@keyframes photoPulse { 100% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.25); transform: scale(1.02); } }
+.photo-container img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; }
+
+.contact-info {
+  display: flex; flex-direction: column; gap: 0.8rem;
+  width: fit-content; margin: 1.5rem auto 0 auto; align-items: flex-start;
+}
+.contact-info a {
+  color: var(--text-muted); text-decoration: none; font-size: 0.85rem;
+  transition: color 0.3s; display: flex; align-items: center;
+  justify-content: flex-start; gap: 0.6rem;
+}
+.contact-info a:hover { color: #fff; }
+
+/* ==========================================================================
+   TIMELINE (EXPERIENCE)
+   ========================================================================== */
+.timeline { position: relative; margin-left: 1rem; padding-left: 1.2rem; padding-bottom: 1rem; margin-top: 0.5rem; }
+.timeline-item { position: relative; margin-bottom: 2.5rem; }
+.timeline-item:last-child { margin-bottom: 0; }
+
+.timeline-item:not(:last-child)::after {
+  content: ''; position: absolute; left: -1.35rem; top: 18px; bottom: -2.5rem; width: 2px;
+  background: linear-gradient(to bottom, var(--accent-cyan) 0%, var(--accent-blue) 50%, var(--accent-cyan) 100%);
+  box-shadow: 0 0 8px rgba(6, 182, 212, 0.3); z-index: 1; background-size: 100% 200%; animation: lineFlow 4s linear infinite;
+}
+
+.timeline-item::before {
+  content: ''; position: absolute; left: -1.7rem; top: 4px; width: 12px; height: 12px;
+  border-radius: 50%; background: var(--bg-dark); border: 2px solid var(--accent-cyan);
+  box-shadow: 0 0 10px var(--accent-glow); z-index: 2; transition: all 0.3s ease;
+}
+.timeline-item:hover::before { background: var(--accent-cyan); border-color: #fff; box-shadow: 0 0 15px var(--accent-blue); transform: scale(1.2); }
+
+.timeline-item .meta { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem; display: block; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 0.5rem; }
+.timeline-item ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+.timeline-item li { position: relative; padding-left: 1.5rem; font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+.timeline-item li::before {
+  content: ''; position: absolute; left: 0; top: 3px; width: 12px; height: 12px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233b82f6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'%3E%3C/polyline%3E%3C/svg%3E");
+  background-size: contain; background-repeat: no-repeat; animation: arrowSlide 2s infinite ease-in-out;
+}
+@keyframes arrowSlide { 0%, 100% { transform: translateX(0); opacity: 0.6; } 50% { transform: translateX(3px); opacity: 1; } }
+@keyframes lineFlow { 0% { background-position: 0 100%; } 100% { background-position: 0 0%; } }
+
+/* ==========================================================================
+   SOFTWARE TOOLS & DYNAMIC SVG HOVERS
+   ========================================================================== */
+.tool-category h4 { color: #fff; margin-bottom: 1rem; font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 0.4rem; }
+.tool-category:not(:first-child) { margin-top: 1.5rem; }
+.tool-list { display: flex; flex-direction: column; gap: 0.8rem; margin-left: 15px; padding-top: 0.2rem; }
+
+.tool-item {
+  position: relative; display: flex; align-items: center;
+  background: rgba(255, 255, 255, 0.02); border: 1px solid var(--glass-border);
+  border-radius: 12px; padding: 0.4rem 1rem 0.4rem 2rem; font-size: 0.85rem; color: #fff;
+  transition: all 0.3s;
+}
+.tool-item:hover { background: rgba(255, 255, 255, 0.06); border-color: var(--accent-blue); transform: translateX(4px); box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15); }
+
+.tool-icon-circle {
+  position: absolute; left: -16px; top: 50%; transform: translateY(-50%);
+  width: 32px; height: 32px; border-radius: 50%;
+  background: var(--bg-dark); border: 1px solid var(--glass-border);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.3s ease;
+}
+.tool-item:hover .tool-icon-circle { border-color: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-glow); }
+
+/*
+  MAGIC SVG TRICK:
+  Upload your colorful SVGs.
+  By default, we turn them into high-contrast monochrome (white/gray) using CSS filters.
+  When hovered, we remove the filter so their true colors show!
+*/
+.svg-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(200%) contrast(100%);
+  transition: filter 0.3s ease;
+}
+
+.tool-item:hover .svg-icon {
+  /* Restores the original full-color SVG on hover */
+  filter: grayscale(0%) brightness(100%) contrast(100%);
+}
+
+/* ==========================================================================
+   EDUCATION
+   ========================================================================== */
+.edu-list { display: flex; flex-direction: column; gap: 1.2rem; }
+.edu-item { display: flex; align-items: center; gap: 0.8rem; border-left: 2px solid transparent; padding-left: 0.5rem; transition: all 0.3s; }
+.edu-item:hover { border-left-color: var(--accent-cyan); padding-left: 0.8rem; }
+.edu-logo { width: 36px; height: 36px; border-radius: 8px; object-fit: contain; background: #fff; padding: 2px; border: 1px solid rgba(255,255,255,0.2); }
+.edu-details h4 { font-size: 0.95rem; color: #fff; margin-bottom: 0.1rem; }
+.edu-details span { font-size: 0.8rem; color: var(--text-muted); display: block; }
+
+/* ==========================================================================
+   REDUCED MOTION
+   Placed last so it wins the cascade over every animation rule above
+   without needing !important.
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .trail,
+  .bento-card::before,
+  .section-icon,
+  .photo-container,
+  .timeline-item:not(:last-child)::after,
+  .timeline-item li::before {
+    animation: none;
+  }
+}
