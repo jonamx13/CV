@@ -2,17 +2,6 @@
    PRINT / PDF LAYOUT
    Loaded via <link media="print">, so every rule here only ever applies to
    the printed / "Save as PDF" output - the live page is untouched.
-
-   Goal: same dark "liquid glass" identity as the site, just re-flowed from
-   the wide 3-column screen dashboard into a 2-column resume layout that
-   fits one Letter page in portrait orientation.
-
-   NOTE ON TUNING: this file does NOT shrink the root font-size globally
-   (an earlier version did, and it wrecked the proportions of every
-   fixed-pixel element - the photo circle, icons, timeline dots - because
-   they don't scale with rem). Instead every element below is sized
-   on purpose, on its own line, so any one of them can be nudged
-   independently without throwing the rest off.
    ========================================================================== */
 
 @page {

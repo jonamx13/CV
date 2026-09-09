@@ -37,7 +37,7 @@
    PROFILE SPECIFICS & CONTACT LINKS
    ========================================================================== */
 .photo-container {
-  position: relative; width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1.2rem auto;
+  position: relative; width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 1.2rem auto;
   border: 2px solid transparent; background: linear-gradient(var(--bg-dark), var(--bg-dark)) padding-box, linear-gradient(45deg, var(--accent-cyan), var(--accent-blue)) border-box;
   box-shadow: 0 0 20px rgba(6, 182, 212, 0.15); animation: photoPulse 4s infinite alternate;
 }

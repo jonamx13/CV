@@ -13,31 +13,25 @@
 
   /* --- 1. Component loading -------------------------------------------- */
   function loadComponents() {
-  var placeholders = Array.prototype.slice.call(document.querySelectorAll("[data-include]"));
-  return Promise.all(placeholders.map(function (el) {
-    var path = el.getAttribute("data-include");
-    return fetch(path, { cache: "no-cache" })
-      .then(function (res) {
-        if (!res.ok) throw new Error("Failed to load " + path + " (" + res.status + ")");
-        return res.text();
-      })
-      .then(function (html) {
-        // Some local dev servers (e.g. VS Code's "Live Server") inject a
-        // live-reload <script> into every HTML response they serve,
-        // including these fragments fetched via AJAX - which corrupts the
-        // markup once inserted. Our components never legitimately ship a
-        // <script>, so strip any that shows up before parsing.
-        html = html.replace(/<script[\s\S]*?<\/script>/gi, "");
-        var tpl = document.createElement("template");
-        tpl.innerHTML = html;
-        el.replaceWith(tpl.content);
-      })
-      .catch(function (err) {
-        console.error(err);
-        el.innerHTML = "<p style=\"padding:1rem;color:#f88;\">Couldn't load this section (" + path + ").</p>";
-      });
-  }));
-}
+    var placeholders = Array.prototype.slice.call(document.querySelectorAll("[data-include]"));
+    return Promise.all(placeholders.map(function (el) {
+      var path = el.getAttribute("data-include");
+      return fetch(path, { cache: "no-cache" })
+        .then(function (res) {
+          if (!res.ok) throw new Error("Failed to load " + path + " (" + res.status + ")");
+          return res.text();
+        })
+        .then(function (html) {
+          var tpl = document.createElement("template");
+          tpl.innerHTML = html;
+          el.replaceWith(tpl.content);
+        })
+        .catch(function (err) {
+          console.error(err);
+          el.innerHTML = "<p style=\"padding:1rem;color:#f88;\">Couldn't load this section (" + path + ").</p>";
+        });
+    }));
+  }
 
   /* --- 2. Translation engine --------------------------------------------- */
   function applyLanguage(lang) {
