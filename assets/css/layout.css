@@ -29,7 +29,11 @@
 @media (max-width: 1024px), (max-height: 900px) {
   body { height: auto; overflow: auto; padding: 1.5rem; }
   .bg-grid-container { display: none; }
-  .bento-grid { flex-direction: column; height: auto; }
+  .bento-grid { 
+    flex-direction: column; 
+    height: auto; 
+    margin-top: 3.5rem;
+  }
   .bento-col { width: 100%; height: auto; }
   .card-experience { overflow: visible; }
   .scroll-area { overflow-y: visible; padding-right: 0; }

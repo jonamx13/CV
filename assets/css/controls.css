@@ -127,7 +127,16 @@
 }
 
 @media (max-width: 1024px), (max-height: 900px) {
-  .site-controls { position: static; margin: 0 auto 1.5rem auto; width: fit-content; }
+  .site-controls { 
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    margin: 0; 
+    width: max-content;
+    z-index: 50;
+  }
 }
 
 /* The print footnote (defined in index.html) only makes sense on paper/PDF */
