@@ -6,11 +6,11 @@
    ========================================================================== */
 window.TRANSLATIONS = {
   en: {
-    "meta.title": "Jonathan Meixueiro | Motion Grapher & UI/UX",
-    "profile.role": "Graphic Designer &amp; UI/UX",
+    "meta.title": "Jonathan Meixueiro | Graphic Designer & Motion Grapher",
+    "profile.role": "Graphic Designer &amp; Motion Grapher",
 
     "summary.title": "Professional Profile",
-    "summary.text": "Bilingual Graphic Designer and UI/UX Front-End Developer with extensive experience in <span class=\"keyword\">motion graphics</span>, <span class=\"keyword\">2D/3D animation</span>, and <span class=\"keyword\">digital product design</span>. Proven ability to bridge the gap between creative design and technical implementation, specializing in highly optimized visual assets using <span class=\"software\">Figma</span> and the <span class=\"brand\">Adobe Creative Suite</span>.",
+    "summary.text": "Graphic Designer and UI/UX Front-End Developer with extensive experience in <span class=\"keyword\">motion graphics</span>, <span class=\"keyword\">2D/3D animation</span>, and <span class=\"keyword\">digital product design</span>. Proven ability to bridge the gap between creative design and technical implementation, specializing in highly optimized visual assets using <span class=\"software\">Figma</span> and the <span class=\"brand\">Adobe Creative Suite</span>.",
 
     "experience.title": "Experience",
 
@@ -44,15 +44,15 @@ window.TRANSLATIONS = {
 
     "controls.download": "Download PDF",
     /* TODO: swap this href for your real GitHub Pages URL once the repo is live */
-    "print.footnote": "This résumé is kept up to date online — <a href=\"https://jonamx13.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">CV Available Online</a>"
+    "print.footnote": "This résumé is kept up to date online — <a href=\"https://jonamx13.github.io/resume-jonathan-meixueiro/\" target=\"_blank\" rel=\"noopener noreferrer\">CV Available Online</a>"
   },
 
   es: {
-    "meta.title": "Jonathan Meixueiro | Motion Grapher y UI/UX",
+    "meta.title": "Jonathan Meixueiro | Diseñador Gráfico y Motion Grapher",
     "profile.role": "Diseñador Gráfico y UI/UX",
 
     "summary.title": "Perfil Profesional",
-    "summary.text": "Diseñador Gráfico bilingüe y Desarrollador Front-End UI/UX con amplia experiencia en <span class=\"keyword\">motion graphics</span>, <span class=\"keyword\">animación 2D/3D</span> y <span class=\"keyword\">diseño de producto digital</span>. Capacidad comprobada para unir el diseño creativo con la implementación técnica, especializado en assets visuales altamente optimizados usando <span class=\"software\">Figma</span> y el <span class=\"brand\">Adobe Creative Suite</span>.",
+    "summary.text": "Diseñador Gráfico y Desarrollador Front-End UI/UX con amplia experiencia en <span class=\"keyword\">motion graphics</span>, <span class=\"keyword\">animación 2D/3D</span> y <span class=\"keyword\">diseño de producto digital</span>. Capacidad comprobada para unir el diseño creativo con la implementación técnica, especializado en assets visuales altamente optimizados usando <span class=\"software\">Figma</span> y el <span class=\"brand\">Adobe Creative Suite</span>.",
 
     "experience.title": "Experiencia",
 
@@ -85,6 +85,6 @@ window.TRANSLATIONS = {
     "edu3.meta": "(Ago 2012 - Dic 2013)",
 
     "controls.download": "Descargar PDF",
-    "print.footnote": "Este currículum se mantiene actualizado en línea — <a href=\"https://jonamx13.github.io/\" target=\"_blank\" rel=\"noopener noreferrer\">CV Disponible en Línea</a>"
+    "print.footnote": "Este currículum se mantiene actualizado en línea — <a href=\"https://jonamx13.github.io/resume-jonathan-meixueiro/\" target=\"_blank\" rel=\"noopener noreferrer\">CV Disponible en Línea</a>"
   }
 };
