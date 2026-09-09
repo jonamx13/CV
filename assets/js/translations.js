@@ -42,7 +42,7 @@ window.TRANSLATIONS = {
     "edu3.role": "Graphic Design",
     "edu3.meta": "(Aug 2012 - Dec 2013)",
 
-    "controls.download": "Download PDF",
+    //"controls.download": "Download PDF",
     /* TODO: swap this href for your real GitHub Pages URL once the repo is live */
     "print.footnote": "This résumé is kept up to date online — <a href=\"https://jonamx13.github.io/resume-jonathan-meixueiro/\" target=\"_blank\" rel=\"noopener noreferrer\">CV Available Online</a>"
   },
@@ -84,7 +84,7 @@ window.TRANSLATIONS = {
     "edu3.role": "Diseño Gráfico",
     "edu3.meta": "(Ago 2012 - Dic 2013)",
 
-    "controls.download": "Descargar PDF",
+    //"controls.download": "Descargar PDF",
     "print.footnote": "Este currículum se mantiene actualizado en línea — <a href=\"https://jonamx13.github.io/resume-jonathan-meixueiro/\" target=\"_blank\" rel=\"noopener noreferrer\">CV Disponible en Línea</a>"
   }
 };

@@ -77,20 +77,20 @@
     });
   }
 
-  /* --- 3. Download / print button ---------------------------------------- */
-  function initDownloadButton() {
+   /* --- 3. Download / print button ---------------------------------------- */
+  /* function initDownloadButton() {
     var btn = document.getElementById("download-pdf-btn");
     if (!btn) return;
     btn.addEventListener("click", function () {
       window.print();
     });
-  }
+  } */
 
   /* --- Boot ---------------------------------------------------------------- */
   document.addEventListener("DOMContentLoaded", function () {
     loadComponents().then(function () {
       initLanguageToggle();
-      initDownloadButton();
+      // initDownloadButton();
       applyLanguage(getPreferredLanguage());
     });
   });
