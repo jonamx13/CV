@@ -49,7 +49,7 @@ window.TRANSLATIONS = {
 
   es: {
     "meta.title": "Jonathan Meixueiro | Diseñador Gráfico y Motion Grapher",
-    "profile.role": "Diseñador Gráfico y UI/UX",
+    "profile.role": "Diseñador Gráfico y Motion Grapher",
 
     "summary.title": "Perfil Profesional",
     "summary.text": "Diseñador Gráfico y Desarrollador Front-End UI/UX con amplia experiencia en <span class=\"keyword\">motion graphics</span>, <span class=\"keyword\">animación 2D/3D</span> y <span class=\"keyword\">diseño de producto digital</span>. Capacidad comprobada para unir el diseño creativo con la implementación técnica, especializado en assets visuales altamente optimizados usando <span class=\"software\">Figma</span> y el <span class=\"brand\">Adobe Creative Suite</span>.",
